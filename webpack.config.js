@@ -11,7 +11,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: '[name].js',
+    filename: '[name]_bundle.js',
     path: path.join(__dirname, 'public'),
     publicPath: '/public/'
   },
@@ -24,12 +24,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: path.join(__dirname, 'src'),
-        loader: 'react-hot!babel',
-      },
-      {
-        test: /\.scss$/,
-        include: path.join(__dirname, 'src'),
-        loader: 'style!css!sass'
+        loader: 'react-hot!babel'
       }
     ]
   }

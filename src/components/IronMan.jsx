@@ -1,13 +1,9 @@
 import React from 'react';
 
-class App extends React.component {
+export default class IronMan extends React.Component {
   render(){
     return (
-      <div>
-        <h1>I'm the Iron Man</h1>
-      </div>
+      <h1>I'm the Iron Man</h1>
     );
-  };
+  }
 }
-
-export default App;
