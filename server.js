@@ -11,5 +11,5 @@ new WebPackDevServer(webpack(config), {
     return console.log(err);
   }
 
-  console.log('Listening on localhost:8080')
+  console.log('Listening on localhost:8888')
 });

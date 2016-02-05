@@ -1,33 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router';
+import DialogStore from '../stores/DialogStore.jsx';
+import Hero from './Hero.jsx';
+import connectToStores from 'alt-utils/lib/connectToStores';
+import _ from 'lodash';
 
+@connectToStores
 export default class Avengers extends React.Component {
   constructor() {
     super();
-    this.state = {
-      avengers: [
-        "Captain America",
-        "Thor",
-        "Black Widow",
-        "Hawk-eye"
-      ]
-    }
+    DialogStore.getDialogs();
+  }
+
+  static getStores(){
+    return [DialogStore];
+  }
+
+  static getPropsFromStores(){
+    return DialogStore.getState();
   }
 
   render() {
-    var avengerNodes = this.state.avengers.map((avenger) => {
-      return (
-        <h1>{avenger}</h1>
-      );
-    });
+    var dialogs = _(this.props.dialogs)
+      .keys()
+      .map((k, i)=> {
+        let dialog = this.props.dialogs[k];
+        return (
+          <Hero key={i} hero={dialog}/>
+        );
+      })
+      .value();
 
     return (
-      <div>
-        <h1><Link to="/ironman">Iron Man</Link></h1>
-        <h1><Link to="/hulk">Hulk</Link></h1>
-
-        {avengerNodes}
-        {this.props.children}
-      </div>);
+      <div>{dialogs}</div>
+    );
   }
 }

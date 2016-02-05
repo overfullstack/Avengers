@@ -1,1 +1,1 @@
-require('./routes/routes.jsx');
+require('./routes/router.jsx');
