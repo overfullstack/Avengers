@@ -5,7 +5,8 @@ class powerActions {
     this.generateActions(
       'yellMyPower',
       'dialogReceived',
-      'dialogFailed'
+      'dialogFailed',
+      'addDialog'
     );
   }
 }
