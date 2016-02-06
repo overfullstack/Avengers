@@ -1,9 +1,18 @@
 import React from 'react';
+import mui from 'material-ui';
+
+var {ListItem} = mui;
 
 export default class Hero extends React.Component {
-  render(){
-    return(
-      <h1 href={'/power/'+ this.props.hero}>{this.props.hero}</h1>
+  render() {
+    let style = {};
+    style.backgroundColor = '#abcdef';
+    return (
+      <ListItem
+        href={'/power/'+ this.props.hero}
+        style={style}
+        key={this.props.hero.key}
+      >{this.props.hero}</ListItem>
     )
   };
 }

@@ -4,6 +4,9 @@ import DialogStore from '../stores/DialogStore.jsx';
 import Hero from './Hero.jsx';
 import connectToStores from 'alt-utils/lib/connectToStores';
 import _ from 'lodash';
+import mui from 'material-ui';
+var {Card, List} = mui;
+import DialogWriter from './DialogWriter.jsx';
 
 @connectToStores
 export default class Avengers extends React.Component {
@@ -12,11 +15,11 @@ export default class Avengers extends React.Component {
     DialogStore.getDialogs();
   }
 
-  static getStores(){
+  static getStores() {
     return [DialogStore];
   }
 
-  static getPropsFromStores(){
+  static getPropsFromStores() {
     return DialogStore.getState();
   }
 
@@ -32,7 +35,16 @@ export default class Avengers extends React.Component {
       .value();
 
     return (
-      <div>{dialogs}</div>
+      <div>
+        <Card style={{
+        flexGrow: 1
+      }}>
+          <List>
+            {dialogs}
+          </List>
+        </Card>
+        <DialogWriter/>
+      </div>
     );
   }
 }
