@@ -1,1 +1,1 @@
-require('./routes/router.jsx');
+require('./relay/relay.js');

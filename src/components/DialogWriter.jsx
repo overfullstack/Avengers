@@ -1,7 +1,6 @@
 import React from 'react';
 import mui from 'material-ui';
 import trim from 'trim';
-import Actions from '../actions/actions.jsx';
 
 var {Card} = mui;
 

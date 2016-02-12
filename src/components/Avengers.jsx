@@ -1,38 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router';
-import DialogStore from '../stores/DialogStore.jsx';
 import Hero from './Hero.jsx';
-import connectToStores from 'alt-utils/lib/connectToStores';
 import _ from 'lodash';
 import mui from 'material-ui';
 var {AppBar, Card, List} = mui;
 import DialogWriter from './DialogWriter.jsx';
+import Relay from 'react-relay';
 
-@connectToStores
 export default class Avengers extends React.Component {
-  constructor() {
-    super();
-    DialogStore.getDialogs();
-  }
-
-  static getStores() {
-    return [DialogStore];
-  }
-
-  static getPropsFromStores() {
-    return DialogStore.getState();
-  }
 
   render() {
-    var dialogs = _(this.props.dialogs)
-      .keys()
-      .map((k, i)=> {
-        let dialog = this.props.dialogs[k];
+    var dialogs = this.props.dialogStore.dialogs.map((dialog, i)=> {
         return (
           <Hero key={i} dialog={dialog}/>
         );
-      })
-      .value();
+      });
 
     let style = {};
     style.backgroundColor = '#009688';
@@ -55,3 +37,16 @@ export default class Avengers extends React.Component {
     );
   }
 }
+
+Avengers = Relay.createContainer(Avengers, {
+  fragments: {
+    dialogStore: () => Relay.QL `
+      fragment on Store {
+        dialogs {
+          hero,
+          line
+        }
+      }
+    `
+  }
+});
