@@ -6,7 +6,7 @@ class powerActions {
       'yellMyPower',
       'dialogReceived',
       'dialogFailed',
-      'addDialog'
+      'addLine'
     );
   }
 }

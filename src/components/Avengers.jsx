@@ -5,7 +5,7 @@ import Hero from './Hero.jsx';
 import connectToStores from 'alt-utils/lib/connectToStores';
 import _ from 'lodash';
 import mui from 'material-ui';
-var {Card, List} = mui;
+var {AppBar, Card, List} = mui;
 import DialogWriter from './DialogWriter.jsx';
 
 @connectToStores
@@ -29,13 +29,20 @@ export default class Avengers extends React.Component {
       .map((k, i)=> {
         let dialog = this.props.dialogs[k];
         return (
-          <Hero key={i} hero={dialog}/>
+          <Hero key={i} dialog={dialog}/>
         );
       })
       .value();
 
+    let style = {};
+    style.backgroundColor = '#009688';
+
     return (
       <div>
+        <AppBar
+          style={style}
+          title="Avengers Chat" />
+
         <Card style={{
         flexGrow: 1
       }}>

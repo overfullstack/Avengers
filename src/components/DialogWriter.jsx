@@ -5,17 +5,17 @@ import Actions from '../actions/actions.jsx';
 
 var {Card} = mui;
 
-export default class DialogWriter extends React.Component {
+export default class lineWriter extends React.Component {
   constructor() {
     super();
     this.state = {
-      dialog: ""
+      line: ""
     }
   }
 
   onChange(event) {
     this.setState({
-      dialog: event.target.value
+      line: event.target.value
     });
   }
 
@@ -23,10 +23,10 @@ export default class DialogWriter extends React.Component {
     if(event.keyCode === 13 && trim(event.target.value) != ''){
       event.preventDefault();
 
-      Actions.addDialog(this.state.dialog);
+      Actions.addLine(this.state.line);
 
       this.setState({
-        dialog: ""
+        line: ""
       });
     }
   }
@@ -39,7 +39,7 @@ export default class DialogWriter extends React.Component {
         padding: 30
       }}>
         <textarea
-          value={this.state.dialog}
+          value={this.state.line}
           onChange={this.onChange.bind(this)}
           onKeyUp={this.onKeyUp.bind(this)}
           style={{
