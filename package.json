@@ -25,6 +25,7 @@
     "babel-relay-plugin": "^0.6.3",
     "express": "^4.13.4",
     "express-graphql": "^0.4.9",
+    "file-loader": "^0.8.5",
     "graphql": "^0.4.17",
     "lodash": "^4.2.1",
     "material-ui": "^0.14.4",
@@ -39,6 +40,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "graphql-relay": "^0.3.6",
     "jquery": "^2.2.0",
     "kerberos": "0.0.18"
   }

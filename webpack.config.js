@@ -13,7 +13,7 @@ module.exports = {
   output: {
     filename: '[name]_bundle.js',
     path: path.join(__dirname, 'public'),
-    publicPath: '/public/'
+    publicPath: '/dist/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -25,6 +25,11 @@ module.exports = {
         test: /\.jsx?$/,
         include: path.join(__dirname, 'src'),
         loader: 'react-hot!babel'
+      },
+      {
+        test: /\.ico$/,
+        include: path.join(__dirname, 'img'),
+        loader: "file?name=favicon.[ext]"
       }
     ]
   }
