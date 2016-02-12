@@ -17,7 +17,7 @@ let Schema = (db) => {
     })
   });
 
-  let schema = new GraphQLSchema({
+  return new GraphQLSchema({
     query: new GraphQLObjectType({
       name: 'Query',
       fields: () => ({
@@ -28,8 +28,6 @@ let Schema = (db) => {
       })
     })
   });
-
-  return schema;
 };
 
 export default Schema;
