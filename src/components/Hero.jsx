@@ -10,10 +10,9 @@ export default class Hero extends React.Component {
     style.color = '#B2DFDB';
     return (
       <ListItem
-        href={'/power/'+ this.props.dialog.hero}
         style={style}
         key={this.props.dialog.key}
-      >{this.props.dialog.hero} -> {this.props.dialog.line}</ListItem>
+      >{this.props.dialog.hero} -~> {this.props.dialog.line}</ListItem>
     )
   };
 }

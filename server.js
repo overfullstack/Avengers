@@ -14,19 +14,23 @@ import fs from 'fs';
     // MongoDB connection
     let db = await MongoClient.connect("mongodb://gopal:saregama@ds061395.mongolab.com:61395/avengers");
     let schema = Schema(db);
+
     // Express server to host GraphQl Server
     let app = express();
     app.use('/graphql', GraphQLHTTP({
       schema,
       graphiql: true
     }));
-    app.listen(3000, () => console.log('GraphQl on localhost:3000'));
+    await app.listen(3000, () => console.log('GraphQl on localhost:3000'));
 
     // Webpack-dev-server for HMR
-    new WebPackDevServer(webpack(config), {
+    await new WebPackDevServer(webpack(config), {
       publicPath: config.output.publicPath,
       hot: true,
-      historyApiFallback: true
+      historyApiFallback: true,
+      proxy: {
+        '/graphql': 'http://localhost:3000'
+      }
     }).listen(8080, 'localhost', (err, result) => {
       if (err) {
         return console.log(err);
@@ -41,7 +45,7 @@ import fs from 'fs';
 
       console.log("Json Schema Created");
     })
-  } catch(e) {
+  } catch (e) {
     console.log(e);
   }
 })();

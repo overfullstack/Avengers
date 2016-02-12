@@ -8,6 +8,8 @@ import {
 
 let Schema = (db) => {
 
+  let store = {};
+
   let dialogType = new GraphQLObjectType({
     name: 'Dialog',
     fields: () => ({
@@ -17,13 +19,23 @@ let Schema = (db) => {
     })
   });
 
+  let storeType = new GraphQLObjectType({
+    name: 'Store',
+    fields: () => ({
+      dialogs: {
+        type: new GraphQLList(dialogType),
+        resolve: () => db.collection("dialogs").find({}).toArray()
+      }
+    })
+  });
+
   return new GraphQLSchema({
     query: new GraphQLObjectType({
       name: 'Query',
       fields: () => ({
-        dialogs: {
-          type: new GraphQLList(dialogType),
-          resolve: () => db.collection("dialogs").find({}).toArray()
+        store: {
+          type: storeType,
+          resolve: () => store
         }
       })
     })
