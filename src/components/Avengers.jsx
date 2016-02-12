@@ -43,8 +43,7 @@ Avengers = Relay.createContainer(Avengers, {
     dialogStore: () => Relay.QL `
       fragment on Store {
         dialogs {
-          hero,
-          line
+          ${Hero.getFragment('dialog')}
         }
       }
     `
