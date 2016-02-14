@@ -10,9 +10,9 @@ import Relay from 'react-relay';
 export default class Avengers extends React.Component {
 
   render() {
-    var dialogs = this.props.dialogStore.dialogs.map((dialog, i)=> {
+    var dialogs = this.props.dialogStore.dialogConnection.edges.map((edge, i) => {
         return (
-          <Hero key={i} dialog={dialog}/>
+          <Hero key={i} dialog={edge.node}/>
         );
       });
 
@@ -23,7 +23,7 @@ export default class Avengers extends React.Component {
       <div>
         <AppBar
           style={style}
-          title="Avengers Chat" />
+          title="Avengers Jabber"/>
 
         <Card style={{
         flexGrow: 1
@@ -32,7 +32,7 @@ export default class Avengers extends React.Component {
             {dialogs}
           </List>
         </Card>
-        <DialogWriter/>
+        <DialogWriter store={this.props.dialogStore}/>
       </div>
     );
   }
@@ -42,8 +42,13 @@ Avengers = Relay.createContainer(Avengers, {
   fragments: {
     dialogStore: () => Relay.QL `
       fragment on Store {
-        dialogs {
-          ${Hero.getFragment('dialog')}
+        id,
+        dialogConnection(first: 100) {
+          edges {
+            node {
+              ${Hero.getFragment('dialog')}
+            }
+          }
         }
       }
     `

@@ -26,4 +26,4 @@ Hero = Relay.createContainer(Hero, {
       }
     `
   }
-})
+});

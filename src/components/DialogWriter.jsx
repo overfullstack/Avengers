@@ -1,7 +1,8 @@
 import React from 'react';
 import mui from 'material-ui';
 import trim from 'trim';
-
+import Relay from 'react-relay';
+import SendDialogMutation from '../mutations/SendDialogMutation';
 var {Card} = mui;
 
 export default class lineWriter extends React.Component {
@@ -21,8 +22,12 @@ export default class lineWriter extends React.Component {
   onKeyUp(event) {
     if(event.keyCode === 13 && trim(event.target.value) != ''){
       event.preventDefault();
-
-      Actions.addLine(this.state.line);
+      let vals = event.target.value.split(',');
+      Relay.Store.commitUpdate(new SendDialogMutation({
+        hero: trim(vals[0]),
+        line: trim(vals[1]),
+        store: this.props.store
+      }));
 
       this.setState({
         line: ""
