@@ -1,0 +1,4 @@
+- Frameworks: Relay, GraphQl
+- FrontEnd: React Js
+- Backend: Express hosting GraphQl (localhost:3000), Webpack-dev-server hosting React (localhost:8080)
+- DB: MongoDB
