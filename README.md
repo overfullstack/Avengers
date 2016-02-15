@@ -1,7 +1,7 @@
 # Avengers
 
 It's a Jabber app, where one can send their fav Super hero dialogs and also troll them
-This is at the utter most basic level, so many cool features in mind. Will implement as I learn.
+This is at the utter most basic level, with many cool features upcoming. Will implement as I learn.
 
 
 ## Stack
@@ -24,8 +24,7 @@ This is at the utter most basic level, so many cool features in mind. Will imple
 *How Cool is that!* ;)
 
 ## ToDo
-1. Clean up code and restructure & categorize dependencies as required.
-2. Clean up code
+- Clean up code (Recurring)
 
 ## Feature Backlog
 1. Marvel movie db representation.

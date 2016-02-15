@@ -1,9 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
 import Hero from './Hero.jsx';
-import _ from 'lodash';
-import mui from 'material-ui';
-var {AppBar, Card, List} = mui;
+import {AppBar, Card, List} from 'material-ui';
 import DialogWriter from './DialogWriter.jsx';
 import Relay from 'react-relay';
 import {debounce} from 'lodash';

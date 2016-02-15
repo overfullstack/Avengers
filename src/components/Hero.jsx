@@ -1,8 +1,6 @@
 import React from 'react';
-import mui from 'material-ui';
+import {ListItem} from 'material-ui';
 import Relay from 'react-relay';
-
-var {ListItem} = mui;
 
 export default class Hero extends React.Component {
   render() {

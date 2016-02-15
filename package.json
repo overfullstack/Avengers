@@ -12,8 +12,6 @@
     "url": "https://github.com/gopalakshintala/Avengers.git"
   },
   "devDependencies": {
-    "alt": "^0.18.2",
-    "alt-utils": "^1.0.0",
     "babel": "^6.5.1",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.4.5",
@@ -37,11 +35,7 @@
     "react-router": "^2.0.0-rc5",
     "trim": "0.0.1",
     "webpack": "^1.12.12",
-    "webpack-dev-server": "^1.14.1"
-  },
-  "dependencies": {
-    "graphql-relay": "^0.3.6",
-    "jquery": "^2.2.0",
-    "kerberos": "0.0.18"
+    "webpack-dev-server": "^1.14.1",
+    "graphql-relay": "^0.3.6"
   }
 }
