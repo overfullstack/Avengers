@@ -13,6 +13,7 @@ import fs from 'fs';
   try {
     // MongoDB connection
     let db = await MongoClient.connect("mongodb://gopal:saregama@ds061395.mongolab.com:61395/avengers");
+    //let db = await MongoClient.connect("mongodb://localhost:27017/avengers");
     let schema = Schema(db);
 
     // Express server to host GraphQl Server
@@ -31,10 +32,8 @@ import fs from 'fs';
       proxy: {
         '/graphql': 'http://localhost:3000'
       }
-    }).listen(8080, 'localhost', (err, result) => {
-      if (err) {
-        return console.log(err);
-      }
+    }).listen(8080, 'localhost', (err) => {
+      if (err) console.log(err);
       console.log('Webpack-dev-server on localhost:8080')
     });
 

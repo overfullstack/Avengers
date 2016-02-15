@@ -1,9 +1,8 @@
 import React from 'react';
-import mui from 'material-ui';
+import {Card} from 'material-ui';
 import trim from 'trim';
 import Relay from 'react-relay';
 import SendDialogMutation from '../mutations/SendDialogMutation';
-var {Card} = mui;
 
 export default class lineWriter extends React.Component {
   constructor() {
