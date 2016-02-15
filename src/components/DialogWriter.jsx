@@ -20,7 +20,7 @@ export default class lineWriter extends React.Component {
   }
 
   onKeyUp(event) {
-    if(event.keyCode === 13 && trim(event.target.value) != ''){
+    if (event.keyCode === 13 && trim(event.target.value) != '') {
       event.preventDefault();
       let vals = event.target.value.split(',');
       Relay.Store.commitUpdate(new SendDialogMutation({
@@ -35,7 +35,7 @@ export default class lineWriter extends React.Component {
     }
   }
 
-  render(){
+  render() {
     return (
       <Card style={{
         maxWidth: 1200,
@@ -55,7 +55,7 @@ export default class lineWriter extends React.Component {
             color: '#555',
             fontSize: 14,
             outline: 'auto 0px'
-          }} />
+          }}/>
       </Card>
     );
   }

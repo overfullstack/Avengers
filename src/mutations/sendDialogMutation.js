@@ -35,4 +35,15 @@ export default class SendDialogMutation extends Relay.Mutation {
       }
     }]
   }
+
+  getOptimisticResponse() {
+    return {
+      dialogEdge: {
+        node: {
+          hero: this.props.hero,
+          line: this.props.line
+        }
+      }
+    }
+  }
 }

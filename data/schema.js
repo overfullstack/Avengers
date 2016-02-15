@@ -10,6 +10,8 @@ import {
 
 import {
   globalIdField,
+  fromGlobalId,
+  nodeDefinitions,
   connectionDefinitions,
   connectionArgs,
   connectionFromPromisedArray,
@@ -17,8 +19,22 @@ import {
 } from 'graphql-relay';
 
 let Schema = (db) => {
+  class Store {}
+  let store = new Store();
 
-  let store = {};
+  let nodeDefs = nodeDefinitions(
+    (globalId) => {
+      let {type} = fromGlobalId(globalId);
+      if(type === 'Store')
+        return store;
+      return null;
+    },
+    (obj) => {
+      if(obj instanceof Store)
+        return storeType;
+      return null;
+    }
+  );
 
   let dialogType = new GraphQLObjectType({
     name: 'Dialog',
@@ -38,13 +54,22 @@ let Schema = (db) => {
       id: globalIdField("Store"),
       dialogConnection: {
         type: dialogConnection.connectionType,
-        args: connectionArgs,
-        resolve: (_, args) => connectionFromPromisedArray(
-          db.collection("dialogs").find({}).toArray(),
-          args
-        )
+        args: {
+          ...connectionArgs,
+          query: {type: GraphQLString}
+        },
+        resolve: (_, args) => {
+          let findParams = {};
+          if(args.query) {
+            findParams.hero = new RegExp(args.query,'i');
+          }
+          return connectionFromPromisedArray(
+            db.collection("dialogs").find(findParams).toArray(),
+            args
+        )}
       }
-    })
+    }),
+    interfaces: [nodeDefs.nodeInterface]
   });
 
   let dialogConnection = connectionDefinitions({
@@ -77,6 +102,7 @@ let Schema = (db) => {
     query: new GraphQLObjectType({
       name: 'Query',
       fields: () => ({
+        node: nodeDefs.nodeField,
         store: {
           type: storeType,
           resolve: () => store
