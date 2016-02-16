@@ -6,9 +6,9 @@ This is at the utter most basic level, with many cool features upcoming. Will im
 
 ## Stack
 - **Frameworks**: Relay, GraphQL
-- **FrontEnd**: React Js
-- **Backend**: Express hosting GraphQl (localhost:3000), Webpack-dev-server hosting React (localhost:8080).
-- **DB**: MongoDB through MongoLab
+- **FrontEnd**: React Js hosted on Webpack-dev-server (localhost:8080)
+- **Backend**: GraphQl hosted on Express (localhost:3000)
+- **DB**: Mongo DB
 
 ## Feature list
 - React hot loading and Webpack-dev-server Hot Module Replacement (HMR).

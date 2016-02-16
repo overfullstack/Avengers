@@ -12,8 +12,8 @@ import fs from 'fs';
 (async () => {
   try {
     // MongoDB connection
-    let db = await MongoClient.connect("mongodb://gopal:saregama@ds061395.mongolab.com:61395/avengers");
-    //let db = await MongoClient.connect("mongodb://localhost:27017/avengers");
+    //let db = await MongoClient.connect("mongodb://gopal:saregama@ds061395.mongolab.com:61395/avengers");
+    let db = await MongoClient.connect("mongodb://localhost:27017/avengers");
     let schema = Schema(db);
 
     // Express server to host GraphQl Server
@@ -45,6 +45,6 @@ import fs from 'fs';
       console.log("Json Schema Created");
     })
   } catch (e) {
-    console.log(e);
+      console.log(e);
   }
 })();

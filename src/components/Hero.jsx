@@ -3,13 +3,15 @@ import {ListItem} from 'material-ui';
 import Relay from 'react-relay';
 
 export default class Hero extends React.Component {
+
   render() {
-    let style = {};
-    style.backgroundColor = '#607D8B';
-    style.color = '#B2DFDB';
+    console.log(this.props);
     return (
       <ListItem
-        style={style}
+        style={{
+          backgroundColor: '#607D8B',
+          color: '#B2DFDB'
+        }}
       >{this.props.dialog.hero} -~> {this.props.dialog.line}</ListItem>
     )
   };
