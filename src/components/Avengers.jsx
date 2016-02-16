@@ -20,6 +20,7 @@ export default class Avengers extends React.Component {
   }, 300);
 
   render() {
+    console.log(this.props);
     var dialogs = this.props.dialogStore.dialogConnection.edges.map((edge, i) => {
       return (
         <Hero key={i} dialog={edge.node}/>

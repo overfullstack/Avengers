@@ -8,7 +8,7 @@ This is at the utter most basic level, with many cool features upcoming. Will im
 - **Frameworks**: Relay, GraphQL
 - **FrontEnd**: React Js hosted on Webpack-dev-server (localhost:8080)
 - **Backend**: GraphQl hosted on Express (localhost:3000)
-- **DB**: MongoDB using MongoLab
+- **DB**: Mongo DB
 
 ## Feature list
 - React hot loading and Webpack-dev-server Hot Module Replacement (HMR).
