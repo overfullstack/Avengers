@@ -21,7 +21,7 @@ render((
       path="/" component={Avengers}
       queries={HomeQueries}/>
   </RelayRouter>
-), document.getElementById('avenger'));
+), avenger);
 
 
 

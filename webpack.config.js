@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     main: [
-      'webpack-dev-server/client?http://localhost:8080',
+      'webpack-hot-middleware/client',
       'webpack/hot/only-dev-server',
       './src/main.jsx'
     ]
