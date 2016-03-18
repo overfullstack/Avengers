@@ -1,1 +1,1 @@
-This Directory is only included for Intellij Debugging purpose. Build is hot loaded in dev environment.
+This Directory is only included for Intellij Debugging purpose. Build is loaded 'in-memory' by  Webpack-dev-server middleware.
