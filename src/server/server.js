@@ -1,14 +1,15 @@
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
-import config from './webpack.config';
+import config from '../../webpack.config.js';
 import express from 'express';
-import Schema from './data/schema';
+import Schema from '../../data/schema';
 import GraphQLHTTP from 'express-graphql';
 import {MongoClient} from 'mongodb';
 import {graphql} from 'graphql';
 import {introspectionQuery} from 'graphql/utilities';
 import fs from 'fs';
+import renderOnServer from "./renderOnServer";
 
 (async () => {
   try {
@@ -18,28 +19,23 @@ import fs from 'fs';
     let schema = Schema(db);
     // Express server to host GraphQl Server
     let app = express();
-
-    app.set('views', __dirname + '/views');
-    app.engine('html', require('ejs').renderFile);
-    app.set('view engine', 'html');
-
+    
     app.use('/graphql', GraphQLHTTP({
       schema,
       graphiql: true
     }));
 
     let compiler = webpack(config);
+    
     app.use(WebpackDevMiddleware(compiler, {
       publicPath: config.output.publicPath,
       stats: {colors: true}
     }));
 
-    app.use(WebpackHotMiddleware(compiler, {
-      log: console.log
-    }));
+    app.use(WebpackHotMiddleware(compiler, {}));
 
-    app.get('/',function(req,res){
-     res.render('./index.html',{});
+    app.get('/*', (req, res, next) => {
+      renderOnServer(req, res, next);
     });
 
     await app.listen(3000, () => console.log('Express on localhost:3000'));
