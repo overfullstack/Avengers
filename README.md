@@ -12,9 +12,10 @@ This is at the utter most basic level, with many cool features upcoming. Will im
 - **Backend**: Mongo DB
 
 ## Feature list
-- React hot loading with Webpack-dev-middleware, set-up inside Express
-- Es6
-- favicon with webpack
+- Isomorphic.
+- React hot loading with Webpack-dev-middleware, set-up inside Express.
+- Es6.
+- favicon with webpack.
 
 ## Installation instructions
 1. Clone the Repo
@@ -36,11 +37,10 @@ nodemon
 
 ## ToDo (Done are stroke-out)
 - Clean up code (Recurring)
-- Make it Isomorphic
+- <s>Make it Isomorphic</s>
 - TDD with Jest and Supertest
 - User authentication with Passport.js
 - warning.js:44 Warning: writeRelayUpdatePayload() while pushing dialogs
-- <s>Setting up Webpack-dev-middleware in Express, which solves running Webpack-dev-server on a separate port<s>
 
 ## Feature Backlog
 1. Marvel movie db representation.
