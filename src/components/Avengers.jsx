@@ -8,16 +8,10 @@ import {debounce} from 'lodash';
 class Avengers extends React.Component {
 
   search = (e) => {
-    e.persist();
-    console.log(e);
-    this.debounceSearch(e);
+    this.debounceSearch({query: e.target.value });
   };
 
-  debounceSearch = debounce((e) => {
-    console.log(e);
-    let query = e.target.value;
-    this.props.relay.setVariables({query});
-  }, 300);
+  debounceSearch = debounce(this.props.relay.setVariables, 300);
 
   render() {
     console.log(this.props);
