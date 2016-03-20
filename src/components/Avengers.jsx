@@ -5,7 +5,7 @@ import DialogWriter from './DialogWriter.jsx';
 import Relay from 'react-relay';
 import {debounce} from 'lodash';
 
-export default class Avengers extends React.Component {
+class Avengers extends React.Component {
 
   search = (e) => {
     e.persist();
@@ -59,12 +59,12 @@ export default class Avengers extends React.Component {
   }
 }
 
-Avengers = Relay.createContainer(Avengers, {
+export default Relay.createContainer(Avengers, {
   initialVariables: {
     query: ''
   },
   fragments: {
-    dialogStore: () => Relay.QL `
+    dialogStore: () => Relay.QL`
       fragment on Store {
         id,
         dialogConnection(first: 100, query: $query) {

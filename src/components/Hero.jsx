@@ -2,7 +2,7 @@ import React from 'react';
 import {ListItem} from 'material-ui';
 import Relay from 'react-relay';
 
-export default class Hero extends React.Component {
+class Hero extends React.Component {
 
   render() {
     console.log(this.props);
@@ -17,9 +17,9 @@ export default class Hero extends React.Component {
   };
 }
 
-Hero = Relay.createContainer(Hero, {
+export default Relay.createContainer(Hero, {
   fragments: {
-    dialog: () => Relay.QL `
+    dialog: () => Relay.QL`
       fragment on Dialog {
         hero,
         line
