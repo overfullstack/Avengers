@@ -14,8 +14,8 @@ import renderOnServer from "./renderOnServer";
 (async () => {
   try {
     // MongoDB connection
-    //let db = await MongoClient.connect("mongodb://gopal:saregama@ds061395.mongolab.com:61395/avengers");
-    let db = await MongoClient.connect("mongodb://localhost:27017/avengers");
+    let db = await MongoClient.connect("mongodb://gopal:saregama@ds061395.mongolab.com:61395/avengers");
+    //let db = await MongoClient.connect("mongodb://localhost:27017/avengers");
     let schema = Schema(db);
     // Express server to host GraphQl Server
     let app = express();

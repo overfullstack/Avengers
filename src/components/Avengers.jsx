@@ -4,14 +4,22 @@ import {AppBar, Card, List} from 'material-ui';
 import DialogWriter from './DialogWriter.jsx';
 import Relay from 'react-relay';
 import {debounce} from 'lodash';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class Avengers extends React.Component {
+  constructor(props) {
+    super(props);
+    this.setVariables = debounce(this.props.relay.setVariables, 300);
+  }
 
   search = (e) => {
-    this.debounceSearch({query: e.target.value });
+    this.setVariables({query: e.target.value});
   };
 
-  debounceSearch = debounce(this.props.relay.setVariables, 300);
+  getChildContext() {
+    return {muiTheme: getMuiTheme(baseTheme)};
+  }
 
   render() {
     console.log(this.props);
@@ -36,12 +44,12 @@ class Avengers extends React.Component {
             borderRadius: 3,
             minHeight: 10,
             color: '#555',
-            fontSize: 10,
+            fontSize: 14,
             outline: 'auto 0px'
           }}/>
 
         <Card style={{
-        flexGrow: 1
+          flexGrow: 1
         }}>
           <List>
             {dialogs}
@@ -52,6 +60,10 @@ class Avengers extends React.Component {
     );
   }
 }
+
+Avengers.childContextTypes = {
+  muiTheme: React.PropTypes.object.isRequired,
+};
 
 export default Relay.createContainer(Avengers, {
   initialVariables: {

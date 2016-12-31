@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Avengers save the Planet",
   "scripts": {
-    "start": "babel-node ./src/server/server.js"
+    "start": "babel-node ./src/server/server.js && open http://localhost:3000"
   },
   "author": "Gopal S Akshintala",
   "license": "ISC",
@@ -42,6 +42,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-relay-plugin": "^0.7.3",
+    "nodemon": "^1.11.0",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.10.0"

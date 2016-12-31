@@ -19,18 +19,19 @@ import {
 } from 'graphql-relay';
 
 let Schema = (db) => {
-  class Store {}
+  class Store {
+  }
   let store = new Store();
 
   let nodeDefs = nodeDefinitions(
     (globalId) => {
       let {type} = fromGlobalId(globalId);
-      if(type === 'Store')
+      if (type === 'Store')
         return store;
       return null;
     },
     (obj) => {
-      if(obj instanceof Store)
+      if (obj instanceof Store)
         return storeType;
       return null;
     }
@@ -60,13 +61,15 @@ let Schema = (db) => {
         },
         resolve: (_, args) => {
           let findParams = {};
-          if(args.query) {
-            findParams.hero = new RegExp(args.query,'i');
+          if (args.query) {
+            findParams.hero = new RegExp(args.query, 'i');
           }
+          console.log(findParams);
           return connectionFromPromisedArray(
             db.collection("dialogs").find(findParams).toArray(),
             args
-        )}
+          )
+        }
       }
     }),
     interfaces: [nodeDefs.nodeInterface]
