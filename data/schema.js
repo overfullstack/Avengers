@@ -61,12 +61,15 @@ let Schema = (db) => {
         },
         resolve: (_, args) => {
           let findParams = {};
+          let findQuery = {};
           if (args.query) {
             findParams.hero = new RegExp(args.query, 'i');
+            findParams.line = new RegExp(args.query, 'i');
+            findQuery.$or = Object.keys(findParams).map((key)=> ({[key] : findParams[key]}));
           }
-          console.log(findParams);
+          console.log(findQuery);
           return connectionFromPromisedArray(
-            db.collection("dialogs").find(findParams).toArray(),
+            db.collection("dialogs").find(findQuery).toArray(),
             args
           )
         }

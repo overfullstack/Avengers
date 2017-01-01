@@ -10,6 +10,7 @@ import {graphql} from 'graphql';
 import {introspectionQuery} from 'graphql/utilities';
 import fs from 'fs';
 import renderOnServer from "./renderOnServer";
+import open from 'open';
 
 (async () => {
   try {
@@ -38,7 +39,14 @@ import renderOnServer from "./renderOnServer";
       renderOnServer(req, res, next);
     });
 
-    await app.listen(3000, () => console.log('Express on localhost:3000'));
+    await app.listen(3000, error => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Express on localhost:3000');
+        open(`http://localhost:3000`);
+      }
+    });
 
     // Generate schema.json
     let json = await graphql(schema, introspectionQuery);

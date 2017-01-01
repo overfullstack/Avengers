@@ -1,7 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Nodemon" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" node-parameters="/usr/local/lib/node_modules/nodemon/bin/nodemon" working-dir="$PROJECT_DIR$">
     <browser with-js-debugger="true" url="http://localhost:3000" />
-    <profiling v8-profiler-path="" />
     <EXTENSION ID="com.jetbrains.nodejs.remote.docker.NodeJSDockerRunConfigurationExtension">
       <option name="envVars">
         <list />
@@ -22,9 +21,6 @@
       <option name="volumeBindings">
         <list />
       </option>
-    </EXTENSION>
-    <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSProfilingRunConfigurationExtension">
-      <profiling v8-profiler-path="" />
     </EXTENSION>
     <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSStartBrowserRunConfigurationExtension">
       <browser with-js-debugger="true" url="http://localhost:3000" />
